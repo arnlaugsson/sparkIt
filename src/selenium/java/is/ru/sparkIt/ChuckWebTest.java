@@ -57,7 +57,7 @@ public class ChuckWebTest {
         driver.findElement(By.id("number")).sendKeys("5");
         driver.findElement(By.cssSelector("button[type=\"submit\"]")).click();
         WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("alert")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("alert-success")));
         String expectedJoke = "Chuck Norris lost his virginity before his dad did.";
         String foundJoke = driver.findElement(By.id("results")).getText();
         assertEquals(foundJoke, expectedJoke);
