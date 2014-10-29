@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Settings</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- load bootstrap for nicer ui -->
+        <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+        <link rel="icon" type="image/png" href="favicon.png">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Change the name</h1>
+            <p>Change the name of the character from the jokes!</p>
+            <form method="post" action="/setName" class="form-inline" role="form">
+                <div class="form group">
+                    <input type="text" name="firstName" id="firstName"
+                    placeholder="Chuck">
+                </div>
+                <div class="form group">
+                    <input type="text" name="lastName" id="lastName"
+                    placeholder="Norris">
+                </div>
+                <button type="submit">Change name</button>
+            </form>
+            <hr>
+            <div id="results" class="alert alert-info">Try it out.</div>
+            <hr>
+        </div>
+
+        <!-- Load jquery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+        <!-- Use ajax to submit form, retrive joke and display on page -->
+        <script>
+        $(document).ready(function() {
+            var form = $('form');
+            form.submit(function( event ) {
+                var firstName = $("#firstName").val();
+                var lastName = $("#lastName").val();
+                $.ajax({
+                    type: form.attr('method'),
+                    url: form.attr('action'),
+                    data: 'firstName=' + firstName + '&lastName=' + lastName
+                }).done(function() {
+                    $('#results').html('Name set as: ' + firstName + ' ' +
+                        lastName).attr('class', 'alert alert-success');
+                }).fail(function() {
+                    $('#results').html('Unable to set name...').attr('class', 'alert alert-danger');
+                });
+                event.preventDefault();
+            });
+        });
+        </script>
+    </body>
+</html>
