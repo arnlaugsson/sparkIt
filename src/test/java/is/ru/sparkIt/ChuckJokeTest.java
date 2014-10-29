@@ -20,4 +20,16 @@ public class ChuckJokeTest {
         String joke = "Chuck Norris lost his virginity before his dad did.";
         assertEquals(chuckJoke, joke);
     }
+
+    @Test
+    public void setNameAndCheckJoke(){
+        String firstName = "Hannes";
+        String lastName = "Pétursson";
+        chuck.alterName(firstName, lastName);
+        String joke = "Hannes Pétursson lost his virginity before his dad did.";
+        assertEquals(chuck.getSpecific(5), joke);
+        joke = "Chuck Norris lost his virginity before his dad did.";
+        chuck.resetName();
+        assertEquals(chuck.getSpecific(5), joke);
+    }
 }

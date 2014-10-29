@@ -34,5 +34,23 @@ public class ChuckWeb implements SparkApplication {
                 return joke;
             }
         });
+
+        post(new Route("/setName"){
+            @Override
+            public Object handle(Request request, Response response){
+                chuckjoke.alterName(request.queryParams("firstName"), request.queryParams("lastName"));
+                response.status(200);
+                return response;
+            }
+        });
+
+        post(new Route("/clearName"){
+            @Override
+            public Object handle(Request request, Response response){
+                chuckjoke.resetName();
+                response.status(200);
+                return response;
+            }
+        });
     }
 }

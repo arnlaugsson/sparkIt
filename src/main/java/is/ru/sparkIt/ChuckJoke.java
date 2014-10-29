@@ -14,4 +14,13 @@ public class ChuckJoke {
         Joke joke = client.getById(num);
         return joke.getJoke();
     }
+
+    public void alterName(String firstName, String lastName){
+        client.setFirstName(firstName);
+        client.setLastName(lastName);
+    }
+
+    public void resetName(){
+        client.clearName();
+    }
 }
