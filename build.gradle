@@ -60,3 +60,7 @@ task seleniumXvfb(type: Test, dependsOn: installApp) {
         'bin/xvfb stop'.execute()
     }
 }
+
+task stage { 
+    dependsOn installApp 
+}

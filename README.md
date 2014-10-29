@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/arnlaugsson/sparkIt.svg?branch=master)](https://travis-ci.org/arnlaugsson/sparkIt)
 # sparkIt
 Simple Spark Java app with support for Selenium testing. The App serves Chuck Norris jokes in a Web application.
 
